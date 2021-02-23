@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://kamilgronek.github.io/register-login-todolist-app/",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
@@ -21,9 +20,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "devStart": "nodemon server.js",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "devStart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
