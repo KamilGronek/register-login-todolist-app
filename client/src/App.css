@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-color: grey;
+}
+
+html,
+body {
+  background-color: grey;
 }
 
 .App-link {

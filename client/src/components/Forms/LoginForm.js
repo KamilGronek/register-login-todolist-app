@@ -47,7 +47,6 @@ function LoginForm(props) {
             {props.handleError("main")}
           </div>
         </div>
-
         <button
           style={{ marginTop: "10px" }}
           className="btn btn-success "
