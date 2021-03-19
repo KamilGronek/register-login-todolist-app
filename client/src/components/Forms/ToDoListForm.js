@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../AppContext";
 
-function ToDoListForm(props) {
+function ToDoListForm() {
+  const {
+    handleSubmitToDoList,
+    handleErrorToDoList,
+    text,
+    setText,
+    showList,
+  } = useContext(AppContext);
+
   return (
     <>
-      <form className="col-4 offset-4" onSubmit={props.handleSubmit}>
+      <form className="col-4 offset-4" onSubmit={handleSubmitToDoList}>
         <h1 style={{ paddingTop: "100px", paddingBottom: "10px" }}>
           To do list
         </h1>
@@ -20,11 +29,11 @@ function ToDoListForm(props) {
               name="text"
               placeholder="Add task"
               onChange={(e) => {
-                props.setText(e.target.value);
+                setText(e.target.value);
               }}
-              value={props.text}
+              value={text}
             />
-            {props.handleError()}
+            {handleErrorToDoList()}
           </div>
         </div>
         <button
@@ -35,7 +44,7 @@ function ToDoListForm(props) {
           Add
         </button>
       </form>
-      {props.showList()}
+      {showList()}
       <div>
         <NavLink to="/register">Register</NavLink>
       </div>

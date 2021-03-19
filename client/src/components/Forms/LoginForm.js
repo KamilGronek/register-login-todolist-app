@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../AppContext";
 
-function LoginForm(props) {
+const LoginForm = () => {
+  const {
+    setEmail,
+    setPassword,
+    handleSubmit,
+    handleError,
+    loginAlert,
+  } = useContext(AppContext);
+
   return (
     <>
-      <form className="col-4 offset-4" onSubmit={props.handleSubmit}>
+      <form className="col-4 offset-4" onSubmit={handleSubmit}>
         <h1 style={{ paddingTop: "100px", paddingBottom: "10px" }}>Login</h1>
         <div className="form-group row">
           <label htmlFor="staticEmail" className="col-4 col-form-label ">
@@ -19,10 +28,10 @@ function LoginForm(props) {
               placeholder="E-mail"
               required
               onChange={(e) => {
-                props.setEmail(e.target.value);
+                setEmail(e.target.value);
               }}
             />
-            {props.handleError("email")}
+            {handleError("email")}
           </div>
         </div>
 
@@ -39,12 +48,12 @@ function LoginForm(props) {
               placeholder="Password"
               required
               onChange={(e) => {
-                props.setPassword(e.target.value);
+                setPassword(e.target.value);
               }}
             />
-            {props.handleError("password")}
-            {props.loginAlert()}
-            {props.handleError("main")}
+            {handleError("password")}
+            {loginAlert()}
+            {handleError("main")}
           </div>
         </div>
         <button
@@ -63,6 +72,6 @@ function LoginForm(props) {
       </div>
     </>
   );
-}
+};
 
 export default LoginForm;

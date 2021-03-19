@@ -24,7 +24,7 @@ db.connect((err) => {
   }
 });
 
-app.listen(8000, function () {
+app.listen(80, function () {
   console.log("Listening!");
 });
 

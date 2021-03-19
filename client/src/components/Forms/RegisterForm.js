@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-function RegisterForm(props) {
+import { AppContext } from "../AppContext";
+const RegisterForm = () => {
+  const {
+    setEmail,
+    setPassword,
+    handleSubmitReg,
+    handleErrorReg,
+    setName,
+    registerAlert,
+  } = useContext(AppContext);
+
   return (
     <>
-      <form className="col-4 offset-4" onSubmit={props.handleSubmit}>
+      <form className="col-4 offset-4" onSubmit={handleSubmitReg}>
         <h1 style={{ paddingTop: "100px", paddingBottom: "10px" }}>Register</h1>
         <div className="form-group row">
           <label htmlFor="staticEmail" className="col-4 col-form-label ">
@@ -18,7 +28,7 @@ function RegisterForm(props) {
               placeholder="Name"
               required
               onChange={(e) => {
-                props.setName(e.target.value);
+                setName(e.target.value);
               }}
             />
           </div>
@@ -36,10 +46,10 @@ function RegisterForm(props) {
               placeholder="E-mail"
               required
               onChange={(e) => {
-                props.setEmail(e.target.value);
+                setEmail(e.target.value);
               }}
             />
-            <div>{props.handleError("email")}</div>
+            <div>{handleErrorReg("email")}</div>
           </div>
         </div>
         <div className="form-group row">
@@ -55,11 +65,11 @@ function RegisterForm(props) {
               placeholder="Password"
               required
               onChange={(e) => {
-                props.setPassword(e.target.value);
+                setPassword(e.target.value);
               }}
             />
-            {props.handleError("password")}
-            {props.registerAlert()}
+            {handleErrorReg("password")}
+            {registerAlert()}
           </div>
         </div>
 
@@ -79,6 +89,6 @@ function RegisterForm(props) {
       </div>
     </>
   );
-}
+};
 
 export default RegisterForm;
